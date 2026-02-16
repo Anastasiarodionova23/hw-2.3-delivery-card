@@ -15,21 +15,12 @@ jobs:
           java-version: '11'
           distribution: 'temurin'
 
-      - name: Start SUT on port 8080
+      - name: Start SUT
         run: |
-          java -jar ./artifacts/app-replan-delivery.jar --server.port=8080 &
-          echo "SUT started on port 8080"
-
-      - name: Wait for SUT
-        run: sleep 30
-
-      - name: Check SUT is running
-        run: |
-          curl -I http://localhost:8080 || echo "SUT not responding on port 8080"
-          netstat -tulpn | grep 8080 || echo "Port 8080 not listening"
+          java -jar ./artifacts/app-replan-delivery.jar &
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
       - name: Test with Gradle
-        run: ./gradlew clean test
+        run: ./gradlew clean test -Dselenide.headless=true --info

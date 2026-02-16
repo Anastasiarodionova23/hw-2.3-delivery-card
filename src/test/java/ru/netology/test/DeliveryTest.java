@@ -16,9 +16,7 @@ public class DeliveryTest {
     void setUp() {
         Configuration.browser = "chrome";
         Configuration.browserSize = "1920x1080";
-        Configuration.headless = true;
-        Configuration.timeout = 30000;
-        open("http://localhost:8080");
+        open("http://localhost:9999");
     }
 
     @Test
