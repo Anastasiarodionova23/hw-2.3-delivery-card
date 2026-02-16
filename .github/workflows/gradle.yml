@@ -24,7 +24,10 @@ jobs:
         run: java -jar ./artifacts/app-replan-delivery.jar &
 
       - name: Wait for SUT to start
-        run: sleep 15
+        run: sleep 30
+
+      - name: Check SUT is running
+        run: curl -I http://localhost:9999 || exit 1
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
