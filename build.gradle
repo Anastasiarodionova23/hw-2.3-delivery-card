@@ -20,5 +20,4 @@ dependencies {
 test {
     useJUnitPlatform()
     systemProperty 'selenide.headless', System.getProperty('selenide.headless')
-    systemProperty 'webdriver.chrome.driver', '/usr/bin/chromedriver'
 }
